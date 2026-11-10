@@ -38,7 +38,27 @@ Any image slot shows a placeholder until a file with the matching name exists.
 
 To remove a photo, delete it from `photos/` and `photos/thumbs/` and run the script again.
 Optional: replace `past/<year-city>/cover.jpg` with one of your own photos for the home page card.
-Requires Pillow once: `python3 -m pip install pillow`.
+
+### Installing Pillow (needed once)
+
+The script needs the Pillow image library. On a Mac with Homebrew Python, `pip install` is blocked
+("externally-managed-environment"), so install it through Homebrew:
+
+```
+brew install pillow
+```
+
+If the script still reports that Pillow is missing, use a virtual environment inside the project instead
+(`.venv/` is git-ignored):
+
+```
+python3 -m venv .venv
+.venv/bin/pip install pillow
+.venv/bin/python tools/build-galleries.py
+```
+
+With the virtual environment, always run the script as `.venv/bin/python tools/build-galleries.py`.
+Avoid `pip install --break-system-packages`, it can break the Homebrew Python installation.
 
 ## Local preview
 
