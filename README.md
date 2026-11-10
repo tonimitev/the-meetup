@@ -24,7 +24,7 @@ Any image slot shows a placeholder until a file with the matching name exists.
 
 ## Adding photos
 
-1. Copy the photos for an event into `past/<year-city>/photos/` (straight from the phone is fine).
+1. Copy the photos and videos (.mp4/.mov) for an event into `past/<year-city>/photos/` (straight from the phone is fine).
 2. From the repository root run:
 
    ```
@@ -32,14 +32,21 @@ Any image slot shows a placeholder until a file with the matching name exists.
    ```
 
    This moves the full-size originals to `past/<year-city>/originals/` (git-ignored, they stay on your computer),
-   writes web-sized copies (max 2000px, location data removed) to `photos/` plus thumbnails to `photos/thumbs/`,
-   and rewrites the gallery in that city's `index.html`. Photos are shown sorted by file name.
+   writes web-sized copies to `photos/` (photos max 2000px, videos compressed to max 1280px MP4, location data removed)
+   plus thumbnails to `photos/thumbs/`,
+   and rewrites the gallery in that city's `index.html`. Items are shown sorted by file name; videos get a play
+   button and play in the lightbox.
 3. Commit and push.
 
-To remove a photo, delete it from `photos/` and `photos/thumbs/` and run the script again.
+To remove a photo or video, delete it from `photos/` and its thumbnail from `photos/thumbs/`
+(videos: `<name>-video.jpg`) and run the script again.
 Optional: replace `past/<year-city>/cover.jpg` with one of your own photos for the home page card.
 
-### Installing Pillow (needed once)
+### Installing the tools (needed once)
+
+Videos need ffmpeg: `brew install ffmpeg` (photos work without it).
+
+#### Pillow
 
 The script needs the Pillow image library. On a Mac with Homebrew Python, `pip install` is blocked
 ("externally-managed-environment"), so install it through Homebrew:

@@ -48,24 +48,46 @@
     '<button class="lightbox__close" aria-label="Close">&times;</button>' +
     '<button class="lightbox__prev" aria-label="Previous">&#8249;</button>' +
     '<img alt="">' +
+    '<video controls playsinline preload="metadata"></video>' +
     '<button class="lightbox__next" aria-label="Next">&#8250;</button>' +
     '<div class="lightbox__count"></div>';
   document.body.appendChild(box);
 
   var big = box.querySelector("img");
+  var vid = box.querySelector("video");
+  function isVideo(href) { return /\.(mp4|webm|mov)$/i.test(href); }
   var count = box.querySelector(".lightbox__count");
   var index = 0;
 
   function show(i) {
     index = (i + items.length) % items.length;
     var a = items[index];
-    big.src = a.getAttribute("href");
+    var href = a.getAttribute("href");
     var thumb = a.querySelector("img");
-    big.alt = thumb ? thumb.alt : "";
+    vid.pause();
+    if (isVideo(href)) {
+      big.style.display = "none";
+      big.removeAttribute("src");
+      vid.style.display = "";
+      vid.poster = thumb ? thumb.getAttribute("src") : "";
+      vid.src = href;
+      vid.play().catch(function () {});
+    } else {
+      vid.style.display = "none";
+      vid.removeAttribute("src");
+      vid.load();
+      big.style.display = "";
+      big.src = href;
+      big.alt = thumb ? thumb.alt : "";
+    }
     count.textContent = (index + 1) + " / " + items.length;
   }
   function open(i) { show(i); box.classList.add("is-open"); document.body.style.overflow = "hidden"; }
-  function close() { box.classList.remove("is-open"); document.body.style.overflow = ""; }
+  function close() {
+    box.classList.remove("is-open");
+    document.body.style.overflow = "";
+    vid.pause();
+  }
 
   items.forEach(function (a, i) {
     a.addEventListener("click", function (e) { e.preventDefault(); open(i); });

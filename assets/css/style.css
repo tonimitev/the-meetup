@@ -710,3 +710,27 @@ h3 { font-size: clamp(1.5rem, 3vw, 1.9rem); }
 @media (max-width: 520px) {
   .dates__next { flex-direction: column; text-align: center; }
 }
+
+/* ---------- Gallery videos ---------- */
+.gallery__item--video { position: relative; }
+.gallery__item--video::after {
+  content: "";
+  position: absolute;
+  top: 50%; left: 50%;
+  width: 58px; height: 58px;
+  translate: -50% -50%;
+  border-radius: 50%;
+  background:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M9 7l9 5-9 5z' fill='%230d0a14'/%3E%3C/svg%3E") center / 60% no-repeat,
+    rgba(233, 211, 164, 0.92);
+  box-shadow: 0 6px 24px rgba(0,0,0,0.5);
+  pointer-events: none;
+  transition: transform 0.3s ease;
+}
+.gallery__item--video:hover::after { transform: scale(1.08); }
+.lightbox video {
+  max-width: 100%;
+  max-height: 100%;
+  border-radius: 6px;
+  background: #000;
+}
