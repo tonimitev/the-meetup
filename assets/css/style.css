@@ -676,3 +676,9 @@ h3 { font-size: clamp(1.5rem, 3vw, 1.9rem); }
   .reveal { opacity: 1; transform: none; }
   html { scroll-behavior: auto; }
 }
+
+.footer__credits { margin-top: 1.2rem; font-size: 0.75rem; }
+.footer__credits summary { cursor: pointer; color: var(--gold); list-style: none; }
+.footer__credits summary::-webkit-details-marker { display: none; }
+.footer__credits p { max-width: 760px; margin: 0.8rem auto 0; line-height: 1.8; }
+.footer__credits a { color: var(--gold-soft); }
