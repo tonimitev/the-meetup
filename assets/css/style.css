@@ -734,3 +734,9 @@ h3 { font-size: clamp(1.5rem, 3vw, 1.9rem); }
   border-radius: 6px;
   background: #000;
 }
+
+/* ---------- Join / contact ---------- */
+.join { text-align: center; }
+.join .lead { margin: 0 auto 2.2rem; }
+.join .lead strong { color: var(--gold-soft); font-weight: 600; }
+.join__btn { text-transform: none; letter-spacing: 0.06em; font-size: 0.95rem; }
