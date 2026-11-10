@@ -2,3 +2,6 @@
 .DS_Store
 **/.DS_Store
 ._*
+
+# Full-size originals (kept locally, not published)
+past/*/originals/

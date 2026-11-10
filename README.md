@@ -24,11 +24,21 @@ Any image slot shows a placeholder until a file with the matching name exists.
 
 ## Adding photos
 
-1. Put the sorted photos for each event in `past/<year-city>/photos/`.
-2. Optionally add `past/<year-city>/cover.jpg` for the home page card.
-3. The gallery entries in each `past/<year-city>/index.html` are then filled in.
+1. Copy the photos for an event into `past/<year-city>/photos/` (straight from the phone is fine).
+2. From the repository root run:
 
-Tip: resize photos to about 2000px on the long side before adding them so pages stay fast.
+   ```
+   python3 tools/build-galleries.py
+   ```
+
+   This moves the full-size originals to `past/<year-city>/originals/` (git-ignored, they stay on your computer),
+   writes web-sized copies (max 2000px, location data removed) to `photos/` plus thumbnails to `photos/thumbs/`,
+   and rewrites the gallery in that city's `index.html`. Photos are shown sorted by file name.
+3. Commit and push.
+
+To remove a photo, delete it from `photos/` and `photos/thumbs/` and run the script again.
+Optional: replace `past/<year-city>/cover.jpg` with one of your own photos for the home page card.
+Requires Pillow once: `python3 -m pip install pillow`.
 
 ## Local preview
 
