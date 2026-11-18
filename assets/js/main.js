@@ -23,6 +23,23 @@
     window.addEventListener("scroll", onScroll, { passive: true });
   }
 
+  // Mobile menu
+  var toggle = document.querySelector(".nav__toggle");
+  if (nav && toggle) {
+    var setMenu = function (open) {
+      nav.classList.toggle("is-open", open);
+      toggle.setAttribute("aria-expanded", open ? "true" : "false");
+      toggle.setAttribute("aria-label", open ? "Close menu" : "Open menu");
+    };
+    toggle.addEventListener("click", function () { setMenu(!nav.classList.contains("is-open")); });
+    nav.querySelectorAll(".nav__links a").forEach(function (a) {
+      a.addEventListener("click", function () { setMenu(false); });
+    });
+    document.addEventListener("keydown", function (e) { if (e.key === "Escape") setMenu(false); });
+    document.addEventListener("click", function (e) { if (!nav.contains(e.target)) setMenu(false); });
+    window.matchMedia("(min-width: 761px)").addEventListener("change", function (m) { if (m.matches) setMenu(false); });
+  }
+
   // Reveal on scroll
   var reveals = document.querySelectorAll(".reveal");
   if ("IntersectionObserver" in window) {

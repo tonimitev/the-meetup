@@ -148,8 +148,62 @@ h3 { font-size: clamp(1.5rem, 3vw, 1.9rem); }
 .nav__links a { color: var(--cream); opacity: 0.85; }
 .nav__links a:hover { color: var(--gold); opacity: 1; }
 
-@media (max-width: 640px) {
-  .nav__links .hide-sm { display: none; }
+.nav__toggle { display: none; }
+
+@media (max-width: 760px) {
+  .nav__toggle {
+    display: inline-flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    width: 44px;
+    height: 44px;
+    margin-right: -10px;
+    padding: 10px;
+    background: none;
+    border: 0;
+    cursor: pointer;
+    color: var(--cream);
+  }
+  .nav__toggle span {
+    display: block;
+    height: 1.5px;
+    background: currentColor;
+    border-radius: 2px;
+    transition: transform 0.25s ease, opacity 0.25s ease;
+  }
+  .nav.is-open .nav__toggle span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+  .nav.is-open .nav__toggle span:nth-child(2) { opacity: 0; }
+  .nav.is-open .nav__toggle span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+
+  .nav.is-open {
+    background: rgba(13, 10, 20, 0.96);
+    border-bottom-color: var(--line);
+  }
+  .nav__links--collapsible {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    flex-direction: column;
+    gap: 0;
+    padding: 8px var(--gutter) 20px;
+    background: rgba(13, 10, 20, 0.96);
+    border-bottom: 1px solid var(--line);
+    font-size: 0.9rem;
+    visibility: hidden;
+    opacity: 0;
+    transform: translateY(-8px);
+    transition: opacity 0.25s ease, transform 0.25s ease, visibility 0s linear 0.25s;
+  }
+  .nav.is-open .nav__links--collapsible {
+    visibility: visible;
+    opacity: 1;
+    transform: none;
+    transition: opacity 0.25s ease, transform 0.25s ease;
+  }
+  .nav__links--collapsible li + li { border-top: 1px solid rgba(214, 177, 110, 0.12); }
+  .nav__links--collapsible a { display: block; padding: 14px 0; }
 }
 
 /* ---------- Hero ---------- */
@@ -740,3 +794,63 @@ h3 { font-size: clamp(1.5rem, 3vw, 1.9rem); }
 .join .lead { margin: 0 auto 2.2rem; }
 .join .lead strong { color: var(--gold-soft); font-weight: 600; }
 .join__btn { text-transform: none; letter-spacing: 0.06em; font-size: 0.95rem; }
+
+/* ==========================================================================
+   Mobile refinements
+   ========================================================================== */
+
+html { -webkit-text-size-adjust: 100%; }
+a, button { -webkit-tap-highlight-color: transparent; }
+section[id] { scroll-margin-top: 68px; }
+
+/* Hover lifts only on devices that can actually hover (avoids "stuck" taps) */
+@media (hover: none) {
+  .card:hover,
+  .past:hover { transform: none; }
+  .past:hover .slot img,
+  .gallery__item:hover img { transform: none; filter: none; }
+}
+
+@media (max-width: 600px) {
+  body { font-size: 1rem; }
+
+  .eyebrow { letter-spacing: 0.22em; }
+
+  .hero__content { padding: 100px var(--gutter) 96px; }
+  .hero__cities { letter-spacing: 0.16em; line-height: 2; }
+  .hero__cities span { padding: 0 0.25em; }
+  .scroll-hint { height: 40px; bottom: 20px; }
+
+  .card__body { padding: 20px 20px 24px; }
+
+  .past .slot { aspect-ratio: 5 / 4; }
+  .past__info { padding: 64px 20px 18px; }
+  .past__city { font-size: 2.1rem; }
+
+  .page-hero { padding: 116px 0 48px; }
+  .back-link { margin-bottom: 1.4rem; }
+
+  /* Two-column photo grid on phones */
+  .gallery { columns: 2; column-gap: 10px; }
+  .gallery__item { margin-bottom: 10px; border-radius: 8px; }
+  .gallery__item--video::after { width: 44px; height: 44px; }
+
+  .pager { font-size: 1.15rem; padding: 32px 0 56px; }
+
+  .footer { padding: 40px 0; }
+  .footer__credits p { line-height: 1.7; }
+
+  /* Lightbox: keep controls off the photo */
+  .lightbox { padding: 64px 8px 88px; }
+  .lightbox__close { top: 12px; right: 12px; }
+  .lightbox__prev,
+  .lightbox__next { top: auto; bottom: 20px; translate: none; }
+  .lightbox__prev { left: 20px; }
+  .lightbox__next { right: 20px; }
+  .lightbox__count { bottom: 34px; }
+}
+
+@media (max-width: 360px) {
+  .gallery { columns: 1; }
+  .nav__brand { font-size: 1.3rem; }
+}

@@ -17,13 +17,16 @@
   <header class="nav">
     <div class="container nav__inner">
       <a class="nav__brand" href="#top">The Meetup</a>
-      <ul class="nav__links">
-        <li class="hide-sm"><a href="#story">Our Story</a></li>
+      <button class="nav__toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="nav-links">
+        <span></span><span></span><span></span>
+      </button>
+      <ul class="nav__links nav__links--collapsible" id="nav-links">
+        <li><a href="#story">Our Story</a></li>
         <li><a href="#upcoming">2026</a></li>
         <li><a href="#programme">Programme</a></li>
-        <li class="hide-sm"><a href="#dates">Dates</a></li>
+        <li><a href="#dates">Dates</a></li>
         <li><a href="#past">Past</a></li>
-        <li class="hide-sm"><a href="#join">Join</a></li>
+        <li><a href="#join">Join</a></li>
       </ul>
     </div>
   </header>
