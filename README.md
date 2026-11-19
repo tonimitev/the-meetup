@@ -6,15 +6,11 @@ Plain HTML/CSS/JS, no build step, ready for GitHub Pages.
 ## Structure
 
 ```
-index.html                     Home: hero, story, Edinburgh 2026, planned events, past meetups
+index.html                     Home: hero, story, Madrid 2027, planned events, dates, past meetups
 assets/css/style.css           All styles
-assets/js/main.js              Photo slots, scroll effects, gallery lightbox
+assets/js/main.js              Photo slots, mobile menu, scroll effects, gallery lightbox
 images/hero/                   hero.jpg              → hero background
-images/2026-edinburgh/         edinburgh.jpg         → upcoming event photo
-                               the-grimoire.jpg      → The Grimoire card
-                               activity-welcome.jpg  → Welcome Evening card
-                               activity-sessions.jpg → Close-up Sessions card
-                               activity-city.jpg     → Exploring Edinburgh card
+images/2027-madrid/            madrid.jpg            → upcoming event photo
 past/<year-city>/index.html    Gallery page for each past meetup
 past/<year-city>/cover.jpg     Cover shown on the home page card
 past/<year-city>/photos/       Sorted photos for that gallery
