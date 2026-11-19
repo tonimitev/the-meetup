@@ -247,7 +247,11 @@ h3 { font-size: clamp(1.5rem, 3vw, 1.9rem); }
   to   { opacity: 1; }
 }
 
-.hero__content { padding: 120px var(--gutter) 80px; }
+.hero__content {
+  width: 100%;
+  min-width: 0;
+  padding: 120px var(--gutter) 80px;
+}
 
 .hero__title {
   font-family: var(--font-display);
@@ -288,6 +292,11 @@ h3 { font-size: clamp(1.5rem, 3vw, 1.9rem); }
   text-transform: uppercase;
   color: var(--muted);
   margin-bottom: 2.6rem;
+  /* cities are written without spaces, so let them wrap as separate items */
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  row-gap: 0.4em;
 }
 .hero__cities span { color: var(--gold); padding: 0 0.4em; }
 
