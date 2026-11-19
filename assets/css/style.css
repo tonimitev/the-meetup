@@ -423,7 +423,19 @@ h3 { font-size: clamp(1.5rem, 3vw, 1.9rem); }
   padding: 0.25em 0.6em;
   border: 1px solid var(--line);
   border-radius: 10px;
+}
+.upcoming__when {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.6rem 1.2rem;
   margin-bottom: 1.6rem;
+}
+.upcoming__dates {
+  font-family: var(--font-display);
+  font-size: clamp(1.3rem, 2.4vw, 1.6rem);
+  line-height: 1.2;
+  color: var(--cream);
 }
 
 @media (max-width: 860px) {
